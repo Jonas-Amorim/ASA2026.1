@@ -4,26 +4,26 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: asa3
+    image: asa01
     ports:
       - '80:80'
     volumes:
-      - ./ASA2026.1:/user/share/nginx/html
+      - ./site01:/user/share/nginx/html
     networks:
-      - my net
+      - my-net
 
 
   site-02:
     build:
       context: .
       dockerfile: Dockerfile
-    image: asa3
+    image: asa02
     ports:
       - '81:80'
     volumes:
-      - ./ASA2026.1:/user/share/nginx/html
+      - ./site02:/user/share/nginx/html
     networks:
-      - my net
+      - my-net
 
 networks:
   my-net:
