@@ -1,0 +1,16 @@
+name: prj-asa
+services:
+  site-01:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: my-site
+    ports:
+      - '80:80'
+    volumes:
+      - ./ASA2026.1:/user/share/nginx/html
+    networks:
+      - my net
+networks:
+  my-net:
+      driver: bridge
