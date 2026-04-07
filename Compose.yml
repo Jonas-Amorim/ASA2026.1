@@ -8,7 +8,7 @@ services:
     ports:
       - '80:80'
     volumes:
-      - ./site01:/user/share/nginx/html
+      - ./site01:/usr/share/nginx/html
     networks:
       - my-net
 
@@ -21,7 +21,7 @@ services:
     ports:
       - '81:80'
     volumes:
-      - ./site02:/user/share/nginx/html
+      - ./site02:/usr/share/nginx/html
     networks:
       - my-net
 
