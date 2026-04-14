@@ -1,0 +1,16 @@
+;
+; BIND data file for jerimum.br zone
+;
+$TTL	604800
+@	IN	SOA	ns.jerimum.br. root.jerimum.br. (
+			20260413	; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+;
+
+@		IN	NS	ns.
+@		IN	A	10.25.2.135
+www		IN	A	10.25.2.135
+portal	IN	CNAME	www
