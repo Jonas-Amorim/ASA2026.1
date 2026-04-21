@@ -1,0 +1,16 @@
+$TTL    3600
+@       IN      SOA     ns1.jonas.lan. admin.jonas.lan. (
+                       2026042104       ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Neg Cache TTL
+;
+@       IN      NS      ns1.jonas.lan.
+@       IN      NS      ns2.jonas.lan.
+ns1     IN      A       172.18.0.2
+ns2     IN      A       172.18.0.3
+www     IN      A       172.18.0.10
+mail    IN      A       172.18.0.20
+@       IN      MX 10   mail.jonas.lan.
+ftp     IN      CNAME   www.jonas.lan.

@@ -1,0 +1,32 @@
+services:
+  primary:
+    build: .       # usa o Dockerfile dentro da pasta principal
+    image: bind9-primary:latest
+    container_name: bind9-master
+    ports:
+      - "5300:53/udp"
+      - "5300:53/tcp"
+      - "9530:953/tcp"
+    volumes:
+      - ./bind9-demo/primary/bind:/etc/bind
+    networks:
+      - dnsnet
+
+  secondary:
+    build: .       # usa o Dockerfile dentro da pasta principal
+    image: bind9-secondary:latest
+    container_name: bind9-slave
+    ports:
+      - "5400:53/udp"
+      - "5400:53/tcp"
+      - "9540:953/tcp"
+    volumes:
+      - ./bind9-demo/secondary/bind:/etc/bind
+    depends_on:
+      - primary
+    networks:
+      - dnsnet
+
+networks:
+  dnsnet:
+    driver: bridge
