@@ -59,24 +59,21 @@ Projeto Bind9 com Docker
 
 
 
-## 📂 Estrutura de Pastas
+## 📂 Estrutura de Pastas (clicável)
+
+- [README.md](README.md) — Documentação do projeto
+- [Dockerfile](Dockerfile) — Imagem base do Bind9
+- [compose.yaml](compose.yaml) — Orquestração dos containers
+- bind9-demo/
+  - primary/
+    - bind/
+      - [named.conf](bind9-demo/primary/bind/named.conf) — Configuração do Bind9 (master)
+      - [db.jonas.lan](bind9-demo/primary/bind/db.jonas.lan) — Arquivo de zona primária
+  - secondary/
+    - bind/
+      - [named.conf](bind9-demo/secondary/bind/named.conf) — Configuração do Bind9 (slave)
 
 
-Estrutura de Pastas:
-
-bind9-dns/
-├── README.md                 # Documentação do projeto
-├── Dockerfile                # Imagem base do Bind9
-├── compose.yaml              # Orquestração dos containers (master/slave)
-├── bind9-demo/
-│   ├── primary/
-│   │   └── bind/
-│   │       ├── named.conf    # Configuração principal do Bind9 (master)
-│   │       └── db.jonas.lan  # Arquivo de zona primária
-│   │
-│   └── secondary/
-│       └── bind/
-│           └── named.conf    # Configuração principal do Bind9 (slave)
  
  
 
