@@ -1,16 +1,17 @@
-FROM ubuntu:22.04
+FROM ubuntu:22.04                          # Base LTS estável
 
-# Instala bind9 e ferramentas
-RUN apt-get update && apt-get install -y bind9 bind9utils bind9-doc dnsutils && rm -rf /var/lib/apt/lists/*
+# Instala bind9 + utils (dnsutils para dig)
+RUN apt-get update && apt-get install -y \
+    bind9 bind9utils bind9-doc dnsutils && \
+    rm -rf /var/lib/apt/lists/*          # Limpa cache (imagem menor)
 
-# Cria pastas e ajusta permissões
-RUN mkdir -p /etc/bind /var/cache/bind && chown -R bind:bind /etc/bind /var/cache/bind
+# Pastas + permissões seguras (bind user)
+RUN mkdir -p /etc/bind /var/cache/bind && \
+    chown -R bind:bind /etc/bind /var/cache/bind
 
-# Copia configs locais
-#COPY ./bind /etc/bind Adicionado no Compose, arg desnecessário.
+# Configs via volume Compose (comentado)
+#COPY ./bind /etc/bind
 
-# Expõe portas DNS
-EXPOSE 53/tcp 53/udp 953/tcp
+EXPOSE 53/tcp 53/udp 953/tcp              # DNS + RNDC (gerenciamento)
 
-# Roda named em foreground
 CMD ["named", "-g", "-c", "/etc/bind/named.conf", "-u", "bind"]
