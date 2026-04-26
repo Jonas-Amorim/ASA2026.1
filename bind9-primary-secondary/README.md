@@ -30,11 +30,11 @@ Projeto Bind9 com Docker
 
         Teste a resolução DNS:
             No primário:
-            docker exec -it bind9-master 
+            docker exec -it bind9-master bash
             dig @localhost jonas.lan
 
             No secundário:
-            docker exec -it bind9-slave 
+            docker exec -it bind9-slave bash
             dig @localhost jonas.lan
 
     Comandos utilizados:

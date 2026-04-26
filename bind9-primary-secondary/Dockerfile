@@ -1,4 +1,4 @@
-FROM ubuntu:22.04                          # Base LTS estável
+FROM ubuntu:22.04                          
 
 # Instala bind9 + utils (dnsutils para dig)
 RUN apt-get update && apt-get install -y \
@@ -12,6 +12,6 @@ RUN mkdir -p /etc/bind /var/cache/bind && \
 # Configs via volume Compose (comentado)
 #COPY ./bind /etc/bind
 
-EXPOSE 53/tcp 53/udp 953/tcp              # DNS + RNDC (gerenciamento)
+EXPOSE 53/tcp 53/udp 953/tcp              
 
 CMD ["named", "-g", "-c", "/etc/bind/named.conf", "-u", "bind"]
